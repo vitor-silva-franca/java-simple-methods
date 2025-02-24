@@ -8,3 +8,8 @@ Basic File Manipulation:
 - Directories;
 - Text File;
 - Binary File.
+
+Exception Handling:
+- Exception X
+- Exception Y
+- Exception Z
