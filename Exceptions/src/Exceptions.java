@@ -16,7 +16,8 @@ public class Exceptions {
         //triggerUnsupportedOperationException();
         //triggerNumberFormatException();
         //triggerStringIndexOutOfBoundsException();
-        triggerNoSuchMethodException();
+        //triggerNoSuchMethodException();
+        triggerInstantiationException();
     }
 
     public static void triggerNullPointerExceptions() {
@@ -137,6 +138,18 @@ public class Exceptions {
             String str = "Hello";
             str.getClass().getMethod("nonExistentMethod");
         } catch (NoSuchMethodException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public static void triggerInstantiationException() {
+        try {
+            System.out.println("Trying to instantiate an abstract class or interface");
+            Class<?> clazz = Runnable.class;
+            clazz.newInstance();
+        } catch (InstantiationException e) {
+            System.out.println("Error: " + e.getMessage());
+        } catch (IllegalAccessException e) {
             System.out.println(e.getMessage());
         }
     }
