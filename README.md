@@ -5,7 +5,7 @@ This is a personal repository to document and list popular methods.
 # Features
 
 Basic File Manipulation:
-- Directories;
+- Directory;
 - Text File;
 - Binary File.
 
