@@ -20,7 +20,6 @@ Exception Handling:
 - UnsupportedOperationException
 - NumberFormatException
 - StringIndexOutOfBoundsException
-- SecurityException
 - NoSuchMethodException
 - InstantiationException
 - IllegalAccessException
