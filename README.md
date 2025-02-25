@@ -4,12 +4,12 @@ This is a personal repository to document and list popular methods.
 
 # Features
 
-Basic File Manipulation:
+Basic Files Manipulation:
 - Directory;
 - Text File;
 - Binary File.
 
-Exception Handling:
+Exceptions:
 - NullPointerException
 - ArrayIndexOutOfBoundsException
 - IndexOutOfBoundsException
