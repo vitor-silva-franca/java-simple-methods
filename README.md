@@ -1,4 +1,4 @@
-# Java Simple Programs
+# Java Simple Methods
 
 This is a personal repository to document and list popular methods.
 
