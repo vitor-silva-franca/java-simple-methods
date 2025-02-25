@@ -17,7 +17,10 @@ public class Exceptions {
         //triggerNumberFormatException();
         //triggerStringIndexOutOfBoundsException();
         //triggerNoSuchMethodException();
-        triggerInstantiationException();
+        //triggerInstantiationException();
+        //triggerNoSuchFieldException();
+        //triggerInterruptedException();
+        triggerCloneNotSupportedException();
     }
 
     public static void triggerNullPointerExceptions() {
@@ -151,6 +154,29 @@ public class Exceptions {
             System.out.println("Error: " + e.getMessage());
         } catch (IllegalAccessException e) {
             System.out.println(e.getMessage());
+        }
+    }
+
+    public static void triggerNoSuchFieldException() {
+        try {
+            System.out.println("Trying to access non-existent field");
+            Class<?> clazz = String.class;
+            clazz.getField("nonExistentField");
+        } catch (NoSuchFieldException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+
+    public static void triggerInterruptedException() {
+        try {
+            System.out.println("Trying to sleep thread");
+            Thread.sleep(1000);
+            Thread.currentThread().interrupt();
+            if (Thread.interrupted()) {
+                throw new InterruptedException();
+            }
+        } catch (InterruptedException e) {
+            System.out.println("Interrupted Exception Error: " + e.getMessage());
         }
     }
 
