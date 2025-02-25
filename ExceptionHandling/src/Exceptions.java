@@ -1,4 +1,6 @@
+import java.io.File;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class Exceptions {
@@ -9,6 +11,12 @@ public class Exceptions {
         //triggerIndexOutOfBoundsException();
         //triggerClassCastException();
         //triggerArithmeticException();
+        //triggerIllegalArgumentException();
+        //triggerIllegalStateException();
+        //triggerUnsupportedOperationException();
+        //triggerNumberFormatException();
+        //triggerStringIndexOutOfBoundsException();
+        triggerNoSuchMethodException();
     }
 
     public static void triggerNullPointerExceptions() {
@@ -61,6 +69,78 @@ public class Exceptions {
             System.out.println(e.getMessage());
         }
     }
+
+    public static void triggerIllegalArgumentException() {
+        try {
+            System.out.println("Trying to set negative age");
+            setAge(-5);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    private static void setAge(int age) {
+        if (age < 0 || age > 150) {
+            throw new IllegalArgumentException("Age must be between 0 and 150");
+        }
+        System.out.println("Age set to: " + age);
+    }
+
+    public static void triggerIllegalStateException() {
+        try {
+            System.out.println("Trying to modify list while iterating");
+            List<String> list = new ArrayList<>();
+            list.add("Item 1");
+            list.add("Item 2");
+            Iterator<String> iterator = list.iterator();
+            while (iterator.hasNext()) {
+                String item = iterator.next();
+                list.add("New Item");
+            }
+        } catch (IllegalStateException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public static void triggerUnsupportedOperationException() {
+        try {
+            System.out.println("Trying to modify an unmodifiable list");
+            List<String> list = List.of("Item 1", "Item 2");
+            list.add("Item 3");
+        } catch (UnsupportedOperationException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+
+    public static void triggerNumberFormatException() {
+        try {
+            System.out.println("Trying to parse a non-numeric string");
+            String str = "abc";
+            int num = Integer.parseInt(str);
+        } catch (NumberFormatException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public static void triggerStringIndexOutOfBoundsException() {
+        try {
+            System.out.println("Trying to access index beyond string length");
+            String str = "Hello";
+            char ch = str.charAt(10);
+        } catch (StringIndexOutOfBoundsException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public static void triggerNoSuchMethodException() {
+        try {
+            System.out.println("Trying to access non-existent method");
+            String str = "Hello";
+            str.getClass().getMethod("nonExistentMethod");
+        } catch (NoSuchMethodException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
 
 
 }
