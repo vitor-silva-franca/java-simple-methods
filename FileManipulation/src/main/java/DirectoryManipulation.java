@@ -1,16 +1,19 @@
 import java.io.*;
+import java.nio.charset.StandardCharsets;
+import javax.crypto.*;
+import javax.crypto.SecretKey;
+import javax.crypto.spec.SecretKeySpec;
+import java.security.MessageDigest;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
 import org.apache.commons.compress.archivers.tar.TarArchiveEntry;
 import org.apache.commons.compress.archivers.tar.TarArchiveInputStream;
 import org.apache.commons.compress.archivers.tar.TarArchiveOutputStream;
-import java.util.zip.GZIPOutputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-
 
 public class DirectoryManipulation {
 
@@ -165,11 +168,85 @@ public class DirectoryManipulation {
     }
 
     public static void encryptDirectory() {
+        String directoryPath = "new_directory";
+        String password = "p4ssw0rd";
+        try {
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            byte[] hash = digest.digest(password.getBytes(StandardCharsets.UTF_8));
+            SecretKey key = new SecretKeySpec(hash, "AES");
 
+            Cipher cipher = Cipher.getInstance("AES");
+            cipher.init(Cipher.ENCRYPT_MODE, key);
+
+            File sourceDir = new File(directoryPath);
+            File encryptedDir = new File(directoryPath + "_encrypted");
+            encryptedDir.mkdirs();
+
+            File[] files = sourceDir.listFiles();
+            if (files != null) {
+                for (File file : files) {
+                    if (file.isFile()) {
+                        File outputFile = new File(encryptedDir, file.getName() + ".encrypted");
+
+                        try (FileInputStream fis = new FileInputStream(file);
+                             FileOutputStream fos = new FileOutputStream(outputFile);
+                             CipherOutputStream cos = new CipherOutputStream(fos, cipher)) {
+
+                            byte[] buffer = new byte[4096];
+                            int bytesRead;
+                            while ((bytesRead = fis.read(buffer)) != -1) {
+                                cos.write(buffer, 0, bytesRead);
+                            }
+                        }
+                    }
+                }
+            }
+            System.out.println("Directory successfully encrypted to: " + encryptedDir.getAbsolutePath());
+        } catch (Exception e) {
+            System.err.println("Error during encryption: " + e.getMessage());
+        }
     }
 
     public static void decryptDirectory() {
+        String encryptedDirPath = "new_directory_encrypted";
+        String password = "p4ssw0rd";
+        try {
+             MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            byte[] hash = digest.digest(password.getBytes(StandardCharsets.UTF_8));
+            SecretKey key = new SecretKeySpec(hash, "AES");
 
+            Cipher cipher = Cipher.getInstance("AES");
+            cipher.init(Cipher.DECRYPT_MODE, key);
+
+            File encryptedDir = new File(encryptedDirPath);
+            File decryptedDir = new File(encryptedDirPath.replace("_encrypted", "_decrypted"));
+            decryptedDir.mkdirs();
+
+              File[] files = encryptedDir.listFiles();
+            if (files != null) {
+                for (File file : files) {
+                    if (file.isFile() && file.getName().endsWith(".encrypted")) {
+                        String outputFileName = file.getName().substring(0,
+                                file.getName().length() - ".encrypted".length());
+                        File outputFile = new File(decryptedDir, outputFileName);
+
+                        try (FileInputStream fis = new FileInputStream(file);
+                             CipherInputStream cis = new CipherInputStream(fis, cipher);
+                             FileOutputStream fos = new FileOutputStream(outputFile)) {
+
+                            byte[] buffer = new byte[4096];
+                            int bytesRead;
+                            while ((bytesRead = cis.read(buffer)) != -1) {
+                                fos.write(buffer, 0, bytesRead);
+                            }
+                        }
+                    }
+                }
+            }
+            System.out.println("Directory successfully decrypted to: " + decryptedDir.getAbsolutePath());
+        } catch (Exception e) {
+            System.err.println("Error during decryption: " + e.getMessage());
+        }
     }
 
 }
