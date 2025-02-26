@@ -25,7 +25,6 @@ Exceptions:
 - IllegalAccessException
 - NoSuchFieldException
 - InterruptedException
-- InvocationTargetException
 - EnumConstantNotPresentException
 - UndeclaredThrowableException
 - IOException
