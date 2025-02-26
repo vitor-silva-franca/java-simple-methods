@@ -21,7 +21,7 @@ public class TextFileManipulation {
         //compressFile();
         //decompressFile();
         //encryptFile();
-        decryptFile();
+        //decryptFile();
     }
 
     public static void createFile() {
@@ -253,6 +253,5 @@ public class TextFileManipulation {
             e.printStackTrace();
         }
     }
-
 
 }
