@@ -20,7 +20,6 @@ public class Exceptions {
         //triggerInstantiationException();
         //triggerNoSuchFieldException();
         //triggerInterruptedException();
-        triggerCloneNotSupportedException();
     }
 
     public static void triggerNullPointerExceptions() {
@@ -179,7 +178,5 @@ public class Exceptions {
             System.out.println("Interrupted Exception Error: " + e.getMessage());
         }
     }
-
-
 
 }
