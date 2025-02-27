@@ -5,9 +5,23 @@ This is a personal repository to document and list popular methods.
 # Features
 
 File Manipulation:
-- Directory;
-- Text File;
-- Binary File.
+- Directory
+- Text File
+- Binary File
+
+String Manipulation:
+
+
+Mathematics:
+- fibonacci()
+- factorial()
+- armstrong()
+- reverseNumber()
+- greatestCommonDivisor(a, b)
+- pascalTriangle()
+- decimalToBinary()
+- binaryToDecimal()
+- perfectNumber()
 
 Exceptions:
 - NullPointerException
