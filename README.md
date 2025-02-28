@@ -10,7 +10,24 @@ File Manipulation:
 - Binary File
 
 String Manipulation:
-
+- ReverseString();
+- Palindrome();
+- VowelAndConsonants();
+- CheckAnagram();
+- CountWords();
+- StringLenght();
+- StringLenght2();
+- EmptyString();
+- CountCharacter();
+- CountCharacter2();
+- RemoveWhiteSpace();
+- RemoveWhiteSpace2();
+- StringContains();
+- StringContains2();
+- StringContains3();
+- StringReplace();
+- StringReplaceAll();
+- StringReplaceFirst();
 
 Mathematics:
 - fibonacci()
