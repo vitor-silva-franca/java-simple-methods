@@ -4,41 +4,62 @@ This is a personal repository to document and list popular methods.
 
 # Features
 
-File Manipulation:
-- Directory
-- Text File
-- Binary File
+Directory Manipulation:
+- CreateDirectory
+- DeleteDirectory
+- RenameDirectory
+- ListDirectories
+- CompressDirectory
+- DecompressDirectory
+- EncryptDirectory
+- DecryptDirectory
+
+Text File Manipulation:
+- CreateFile 
+- WriteFile 
+- ReadFile 
+- DeleteFile 
+- RenameFile 
+- ListFiles 
+- CompressFile 
+- DecompressFile 
+- EncryptFile 
+- DecryptFile 
+
+Binary File Manipulation:
+- WriteBinaryFile
+- ReadBinaryFile
 
 String Manipulation:
-- ReverseString();
-- Palindrome();
-- VowelAndConsonants();
-- CheckAnagram();
-- CountWords();
-- StringLenght();
-- StringLenght2();
-- EmptyString();
-- CountCharacter();
-- CountCharacter2();
-- RemoveWhiteSpace();
-- RemoveWhiteSpace2();
-- StringContains();
-- StringContains2();
-- StringContains3();
-- StringReplace();
-- StringReplaceAll();
-- StringReplaceFirst();
+- ReverseString 
+- Palindrome 
+- VowelAndConsonants 
+- CheckAnagram 
+- CountWords 
+- StringLenght 
+- StringLenght2 
+- EmptyString 
+- CountCharacter 
+- CountCharacter2 
+- RemoveWhiteSpace 
+- RemoveWhiteSpace2 
+- StringContains 
+- StringContains2 
+- StringContains3 
+- StringReplace 
+- StringReplaceAll 
+- StringReplaceFirst 
 
 Mathematics:
-- fibonacci()
-- factorial()
-- armstrong()
-- reverseNumber()
-- greatestCommonDivisor(a, b)
-- pascalTriangle()
-- decimalToBinary()
-- binaryToDecimal()
-- perfectNumber()
+- Fibonacci 
+- Factorial 
+- Armstrong 
+- ReverseNumber 
+- GreatestCommonDivisor
+- PascalTriangle 
+- DecimalToBinary 
+- BinaryToDecimal 
+- PerfectNumber 
 
 Exceptions:
 - NullPointerException
